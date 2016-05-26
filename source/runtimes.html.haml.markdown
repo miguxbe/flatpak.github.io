@@ -3,13 +3,13 @@
 
   # Runtimes
 
-  This page lists the runtimes that are currently available for xdg-app.
+  This page lists the runtimes that are currently available for flatpak.
 
   ## Stable Runtimes
 
   Stable runtimes are currently available in Freedesktop and GNOME flavours. These are hosted at [https://sdk.gnome.org/repo/](https://sdk.gnome.org/repo/) and signed with the key at [https://sdk.gnome.org/keys/gnome-sdk.gpg](https://sdk.gnome.org/keys/gnome-sdk.gpg). The repository can be added with:
 
-      $ xdg-app remote-add --user --gpg-import=gnome-sdk.gpg gnome https://sdk.gnome.org/repo/
+      $ flatpak remote-add --gpg-import=gnome-sdk.gpg gnome https://sdk.gnome.org/repo/
 
   GNOME runtimes are released with each major release and contain the main GNOME platform libraries. They are based on the official freedesktop.org runtime. At the moment they only receive minor bug fixing and security updates, but should be considered ABI stable and frozen.
 
@@ -35,6 +35,11 @@
       <td>3.16, 3.18, 3.20</td>
     </tr>
     <tr>
+      <td>org.gnome.Sdk.Locale</td>
+      <td>Locale info addin for org.gnome.Sdk</td>
+      <td>3.20</td>
+    </tr>
+    <tr>
       <td>org.gnome.Sdk.Debug</td>
       <td>Debug info addin for org.gnome.Sdk</td>
       <td>3.20</td>
@@ -57,11 +62,21 @@
     <tr>
       <td>org.freedesktop.Sdk.Locale</td>
       <td>Locale addins for org.freedesktop.Sdk</td>
-      <td>1.0, 1.2, 1.4</td>
+      <td>1.4</td>
     </tr>
     <tr>
       <td>org.freedesktop.Sdk.Debug</td>
       <td>Debug info Addin for org.freedesktop.Sdk</td>
+      <td>1.4</td>
+    </tr>
+    <tr>
+      <td>org.freedesktop.BasePlatform</td>
+      <td>Yocto based core for org.freedesktop.Platform</td>
+      <td>1.4</td>
+    </tr>
+    <tr>
+      <td>org.freedesktop.BaseSdk</td>
+      <td>Yocto based core for org.freedesktop.Sdk</td>
       <td>1.4</td>
     </tr>
   </table>
@@ -70,9 +85,9 @@
 
   Regular nightly builds are available of the latest GNOME and Freedesktop runtimes from Git. These are not stable and have no guarantees on ABI stability or if they even work. However, they are a useful way to test the latest version that is in development. The same repository also contains a few applications built against this runtime allowing you to test it.
 
-  The nightly repository is available at [https://sdk.gnome.org/nightly/repo/](https://sdk.gnome.org/nightly/repo/). All releases are manually signed with the key at [https://sdk.gnome.org/nightly/keys/nightly.gpg](https://sdk.gnome.org/nightly/keys/nightly.gpg). This repository can be added with
+  The nightly repository is available at [https://sdk.gnome.org/nightly/repo/](https://sdk.gnome.org/nightly/repo/). All releases are manually signed with the key at [https://sdk.gnome.org/nightly/keys/nightly.gpg](https://sdk.gnome.org/nightly/keys/nightly.gpg). This repository can be added with:
 
-      $ xdg-app --user remote-add --gpg-key=nightly.gpg gnome-nightly https://sdk.gnome.org/nightly/repo/
+      $ flatpak remote-add --gpg-import=nightly.gpg gnome-nightly https://sdk.gnome.org/nightly/repo/
 
   ### Available nightly runtimes
 
@@ -105,47 +120,12 @@
       <td>Debug info addin for org.gnome.Sdk</td>
       <td>master</td>
     </tr>
-    <tr>
-      <td>org.freedesktop.Platform</td>
-      <td>Smaller runtime with basic platform including X11, Wayland, Mesa, D-Bus, SDL, etc. Used as a base for org.gnome.Platform and other runtimes.</td>
-      <td>master</td>
-    </tr>
-    <tr>
-      <td>org.freedesktop.Platform.Locale</td>
-      <td>Addins to org.gnome.Platform that adds locale data and translations</td>
-      <td>master</td>
-    </tr>
-    <tr>
-      <td>org.freedesktop.Sdk</td>
-      <td>The development runtime used by org.freedesktop.Platform</td>
-      <td>master</td>
-    </tr>
-    <tr>
-      <td>org.freedesktop.Sdk.Locale</td>
-      <td>Locale addins for org.freedesktop.Sdk</td>
-      <td>master</td>
-    </tr>
-    <tr>
-      <td>org.freedesktop.Sdk.Debug</td>
-      <td>Debug info Addin for org.freedesktop.Sdk</td>
-      <td>master</td>
-    </tr>
-    <tr>
-      <td>org.freedesktop.BasePlatform</td>
-      <td>Yocto based core for org.freedesktop.Platform</td>
-      <td>master</td>
-    </tr>
-    <tr>
-      <td>org.freedesktop.BaseSdk</td>
-      <td>Yocto based core for org.freedesktop.Sdk</td>
-      <td>master</td>
-    </tr>
   </table>
   
   Additionally there is a repo with nightly builds of some GNOME applications, which can be listed with:
 
-      $ xdg-app --user remote-add --gpg-key=nightly.gpg gnome-nightly-apps https://sdk.gnome.org/nightly/repo-apps/
-      $ xdg-app --user remote-ls gnome-nightly-apps --app
+      $ flatpak remote-add --gpg-import=nightly.gpg gnome-nightly-apps https://sdk.gnome.org/nightly/repo-apps/
+      $ flatpak remote-ls gnome-nightly-apps --app
 
   This includes the following apps:
 
@@ -158,11 +138,14 @@
       org.gnome.Epiphany
       org.gnome.Evince
       org.gnome.Games
+      org.gnome.Gitg
+      org.gnome.Glade
       org.gnome.Maps
       org.gnome.News
       org.gnome.Polari
-      org.gnome.Software.XdgApp
+      org.gnome.Rhythmbox
       org.gnome.Todo
+      org.gnome.Totem
       org.gnome.Weather
       org.gnome.bijiben
       org.gnome.clocks
@@ -170,14 +153,12 @@
       org.gnome.gedit
       org.gnome.iagno
 
-  Of particular interest is org.gnome.Software.XdgApp, which lets you browse and install xdg-app with a graphical tool.
-
   All these apps are using a version name of "master". For example, to install gedit run:
 
-      $ xdg-app --user install gnome-nightly-apps org.gnome.gedit master
+      $ flatpak install gnome-nightly-apps org.gnome.gedit master
 
   And to update it:
 
-      $ xdg-app --user update org.gnome.gedit master
+      $ flatpak update org.gnome.gedit master
 
 </div></div></div></section>

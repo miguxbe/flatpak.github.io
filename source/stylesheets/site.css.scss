@@ -588,6 +588,8 @@ table {
       ul {
         margin: 0; padding: 0;
         li {
+          display: block;
+          width: 100%;
           text-transform: none;
           /* padding-left: 1em; */
           a { color: darken($neutral_color,20%); }
@@ -596,4 +598,12 @@ table {
     }
   }
 }
-  
+
+.unselectable {
+  @each $quirk in ('-moz-','-ms-', '-webkit-', '') {
+    #{$quirk}user-select: none;
+  }
+  color: $neutral_color;
+  font-weight: bold;
+  font-size: 90%;
+}

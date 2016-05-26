@@ -1,15 +1,16 @@
 - title: About
   link: "#about"
-- title: Users
+- title: Getting Flatpak
+  link: "getting.html"
+- title: Run
   link: "#users"
-  submenu:
-  - title: Downloading Flatpak
-    link: getting.html
-- title: Developers
+- title: Build
   link: "#developers"
   submenu:
   - title: Getting Started with Flatpack
     link: developer.html
+  - title: Bundling a Java Application with Flatpak
+    link: bundling-a-java-app.html
 - title: Get&nbsp;Involved
   link: "#get-involved"
 - title: FAQ
